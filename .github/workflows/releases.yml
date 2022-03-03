@@ -2,12 +2,12 @@ name: Releases
 
 on:
   push:
-    branches: ['main']
+    branches: ['main', 'next']
 
 jobs:
-  release:
+  release-latest:
     name: Release Latest
-    if: github.ref == 'refs/heads/main'
+    if: 'false'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -29,3 +29,28 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+  
+  release-next:
+    name: Release Next
+    if: github.ref == 'refs/heads/next'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Volta
+        uses: volta-cli/action@v1
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Publish to NPM under next tag
+        run: |
+          npx changeset pre enter next \
+          npx changeset version \
+          git add . \
+          git commit -m "chore':' Enter prerelease mode and version packages" \
+          npx changeset publish \
+          git push --follow-tags
