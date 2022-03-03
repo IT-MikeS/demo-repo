@@ -44,7 +44,10 @@ jobs:
         uses: volta-cli/action@v1
 
       - name: Install Dependencies
-        run: npm install
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_AUTH_TOKEN }}" >> ~/.npmrc
+          npm whoami
+          npm install
 
       - name: Publish to NPM under next tag
         env:
