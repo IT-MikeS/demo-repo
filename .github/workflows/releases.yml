@@ -48,9 +48,9 @@ jobs:
 
       - name: Publish to NPM under next tag
         run: |
-          npx changeset pre enter next \
-          npx changeset version \
-          git add . \
-          git commit -m "chore':' Enter prerelease mode and version packages" \
-          npx changeset publish \
+          npx changeset pre enter next
+          npx changeset version
+          git add . 
+          git commit -m "chore':' Enter prerelease mode and version packages"
+          npx changeset publish
           git push --follow-tags
