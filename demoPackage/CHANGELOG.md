@@ -1,5 +1,11 @@
 # @it_mike_s/nothing-useful
 
+## 0.0.6
+
+### Patch Changes
+
+- [`cc93b13`](https://github.com/IT-MikeS/demo-repo/commit/cc93b13b1c6bc82d978c508aaf44b91be6f60dd5) Thanks [@IT-MikeS](https://github.com/IT-MikeS)! - comment
+
 ## 0.0.5
 
 ### Patch Changes
