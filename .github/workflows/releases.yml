@@ -140,7 +140,7 @@ jobs:
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
           npx changeset version --snapshot dev
-          npx changeset publish --tag dev
+          npx changeset publish --tag dev --no-git-tag --snapshot
           git add . 
           git commit -m "Publish to NPM under dev tag [skip releases]"
           git push --follow-tags
