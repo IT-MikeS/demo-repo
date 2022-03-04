@@ -1,0 +1,10 @@
+{
+  "mode": "exit",
+  "tag": "next",
+  "initialVersions": {
+    "@it_mike_s/nothing-useful": "0.0.2"
+  },
+  "changesets": [
+    "olive-parrots-unite"
+  ]
+}
