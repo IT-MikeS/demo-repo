@@ -1,5 +1,11 @@
 # @it_mike_s/nothing-useful
 
+## 0.0.5-dev.2
+
+### Patch Changes
+
+- [`ddb1d5c`](https://github.com/IT-MikeS/demo-repo/commit/ddb1d5cde97891f25cf86626bac706093cee6278) Thanks [@IT-MikeS](https://github.com/IT-MikeS)! - comment
+
 ## 0.0.5-dev.1
 
 ### Patch Changes
