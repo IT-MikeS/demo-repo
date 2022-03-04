@@ -30,6 +30,7 @@ jobs:
         run: |
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
+          npx changeset pre exit
           npx changeset version
           git add . 
           git commit -m "Publish to NPM as latest"
@@ -62,6 +63,7 @@ jobs:
         run: |
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
+          npx changeset pre exit
           npx changeset pre enter next
           npx changeset version
           git add . 
@@ -95,6 +97,7 @@ jobs:
         run: |
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
+          npx changeset pre exit
           npx changeset pre enter dev
           npx changeset version
           git add . 
