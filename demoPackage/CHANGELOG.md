@@ -1,5 +1,11 @@
 # @it_mike_s/nothing-useful
 
+## 0.0.5
+
+### Patch Changes
+
+- [`fd02a36`](https://github.com/IT-MikeS/demo-repo/commit/fd02a3655b5a58beb4a89e5962e632ed4e692e21) Thanks [@IT-MikeS](https://github.com/IT-MikeS)! - comment
+
 ## 0.0.4
 
 ### Patch Changes
