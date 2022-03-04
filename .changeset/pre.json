@@ -4,5 +4,7 @@
   "initialVersions": {
     "@it_mike_s/nothing-useful": "0.0.3"
   },
-  "changesets": []
+  "changesets": [
+    "shiny-apes-cry"
+  ]
 }
