@@ -1,5 +1,11 @@
 # @it_mike_s/nothing-useful
 
+## 0.0.7
+
+### Patch Changes
+
+- [#19](https://github.com/IT-MikeS/demo-repo/pull/19) [`e7216ce`](https://github.com/IT-MikeS/demo-repo/commit/e7216ce883fd6381e1da7698ebd3666edcdf159f) Thanks [@IT-MikeS](https://github.com/IT-MikeS)! - comment fix
+
 ## 0.0.0-next-20220304191352
 
 ### Patch Changes
