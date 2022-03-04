@@ -106,7 +106,7 @@ jobs:
           git config user.email "users.noreply.github.com"
           npx changeset pre enter next
           npx changeset version
-          npx changeset publish --tag next
+          npx changeset publish 
           npx changeset pre exit
           git add . 
           git commit -m "Publish to NPM under next tag [skip releases]"
@@ -141,7 +141,7 @@ jobs:
           git config user.email "users.noreply.github.com"
           npx changeset pre enter dev
           npx changeset version
-          npx changeset publish --tag dev
+          npx changeset publish 
           npx changeset pre exit
           git add . 
           git commit -m "Publish to NPM under dev tag [skip releases]"
