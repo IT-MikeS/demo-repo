@@ -7,7 +7,7 @@ on:
 jobs:
   release-latest:
     name: Release Latest
-    if: github.ref == 'refs/heads/main' && "!contains(github.event.head_commit.message, '[skip releases]')"
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -39,7 +39,7 @@ jobs:
   
   release-next:
     name: Release Next
-    if: github.ref == 'refs/heads/next' && "!contains(github.event.head_commit.message, '[skip releases]')"
+    if: github.ref == 'refs/heads/next' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -73,7 +73,7 @@ jobs:
   
   release-dev:
     name: Release Dev
-    if: github.ref == 'refs/heads/dev' && "!contains(github.event.head_commit.message, '[skip releases]')"
+    if: github.ref == 'refs/heads/dev' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
