@@ -1,5 +1,11 @@
 # @it_mike_s/nothing-useful
 
+## 0.0.8
+
+### Patch Changes
+
+- [#21](https://github.com/IT-MikeS/demo-repo/pull/21) [`696d680`](https://github.com/IT-MikeS/demo-repo/commit/696d680a52458a2425083ab51485e753c9d7ec73) Thanks [@IT-MikeS](https://github.com/IT-MikeS)! - comment change
+
 ## 0.0.7
 
 ### Patch Changes
