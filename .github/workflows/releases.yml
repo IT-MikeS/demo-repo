@@ -137,6 +137,3 @@ jobs:
           git config user.email "users.noreply.github.com"
           npx changeset version --snapshot dev
           npx changeset publish --tag dev
-          git add . 
-          git commit -m "Publish to NPM under dev tag [skip releases]"
-          git push --follow-tags
