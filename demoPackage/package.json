@@ -1,6 +1,6 @@
 {
   "name": "@it_mike_s/nothing-useful",
-  "version": "0.0.4-next.0",
+  "version": "0.0.4",
   "author": "IT-MikeS",
   "description": "Just a function to capitalize each of the words in a string.",
   "license": "MIT",
