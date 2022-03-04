@@ -2,12 +2,12 @@ name: Releases
 
 on:
   push:
-    branches: ['main', 'next']
+    branches: ['main', 'next', 'dev']
 
 jobs:
   release-latest:
     name: Release Latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -23,24 +23,23 @@ jobs:
       - name: Install Dependencies
         run: npm install
 
-      - name: Publish to NPM under next tag
+      - name: Publish to NPM under latest tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
         run: |
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
-          npx changeset pre exit
           npx changeset version
           git add . 
-          git commit -m "Publish to NPM as latest"
+          git commit -m "Publish to NPM as latest [skip releases]"
           npx changeset publish
           git push --follow-tags
 
   
   release-next:
     name: Release Next
-    if: github.ref == 'refs/heads/next'
+    if: github.ref == 'refs/heads/next' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -63,18 +62,18 @@ jobs:
         run: |
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
-          npx changeset pre exit
           npx changeset pre enter next
           npx changeset version
-          git add . 
-          git commit -m "Publish to NPM under next tag"
           npx changeset publish
+          npx changeset pre exit
+          git add . 
+          git commit -m "Publish to NPM under next tag [skip releases]"
           git push --follow-tags
 
   
   release-dev:
     name: Release Dev
-    if: github.ref == 'refs/heads/dev'
+    if: github.ref == 'refs/heads/dev' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -97,10 +96,10 @@ jobs:
         run: |
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
-          npx changeset pre exit
           npx changeset pre enter dev
           npx changeset version
-          git add . 
-          git commit -m "Publish to NPM under dev tag"
           npx changeset publish
+          npx changeset pre exit
+          git add . 
+          git commit -m "Publish to NPM under dev tag [skip releases]"
           git push --follow-tags
