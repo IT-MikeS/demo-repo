@@ -45,6 +45,15 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           message: 'Sync branches with main after release [skip releases]'
 
+      - name: Merge main -> dev
+        uses: devmasx/merge-branch@8b86512c768bec19827894f0a39a776809668189
+        with:
+          type: now
+          from_branch: main
+          target_branch: dev
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: 'Sync branches with main after release [skip releases]'
+
   
   release-next:
     name: Release Next
