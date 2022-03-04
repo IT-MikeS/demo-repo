@@ -80,10 +80,8 @@ jobs:
         run: |
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
-          npx changeset pre enter next
-          npx changeset version
-          npx changeset publish
-          npx changeset pre exit
+          npx changeset version --snapshot next
+          npx changeset publish --tag next
           git add . 
           git commit -m "Publish to NPM under next tag [skip releases]"
           git push --follow-tags
@@ -114,10 +112,8 @@ jobs:
         run: |
           git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
           git config user.email "users.noreply.github.com"
-          npx changeset pre enter dev
-          npx changeset version
-          npx changeset publish
-          npx changeset pre exit
+          npx changeset version --snapshot dev
+          npx changeset publish --tag dev
           git add . 
           git commit -m "Publish to NPM under dev tag [skip releases]"
           git push --follow-tags
