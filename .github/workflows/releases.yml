@@ -7,7 +7,7 @@ on:
 jobs:
   release-latest:
     name: Release Latest
-    if: 'false'
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
@@ -16,19 +16,26 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Volta
-        uses: volta-cli/action@v1
+        uses: volta-cli/action@fdf4cf319494429a105efaa71d0e5ec67f338c6e
+        with:
+          registry-url: https://registry.npmjs.org/
 
       - name: Install Dependencies
         run: npm install
 
-      - name: Create Release Pull Request or Publish to npm
-        uses: changesets/action@v1
-        with:
-          # This expects you to have a script called release which does a build for your packages and calls changeset publish
-          publish: npx changeset publish
+      - name: Publish to NPM under next tag
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+        run: |
+          git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
+          git config user.email "users.noreply.github.com"
+          npx changeset version
+          git add . 
+          git commit -m "Publish to NPM as latest"
+          npx changeset publish
+          git push --follow-tags
+
   
   release-next:
     name: Release Next
@@ -58,6 +65,39 @@ jobs:
           npx changeset pre enter next
           npx changeset version
           git add . 
-          git commit -m "chore':' Enter prerelease mode and version packages"
+          git commit -m "Publish to NPM under next tag"
+          npx changeset publish
+          git push --follow-tags
+
+  
+  release-dev:
+    name: Release Dev
+    if: github.ref == 'refs/heads/dev'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Volta
+        uses: volta-cli/action@fdf4cf319494429a105efaa71d0e5ec67f338c6e
+        with:
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Publish to NPM under dev tag
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+        run: |
+          git config user.name "Github Workflow (on behalf of ${{ github.actor }})"
+          git config user.email "users.noreply.github.com"
+          npx changeset pre enter dev
+          npx changeset version
+          git add . 
+          git commit -m "Publish to NPM under dev tag"
           npx changeset publish
           git push --follow-tags
