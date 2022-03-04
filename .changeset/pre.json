@@ -2,7 +2,7 @@
   "mode": "exit",
   "tag": "dev",
   "initialVersions": {
-    "@it_mike_s/nothing-useful": "0.0.5-dev.1"
+    "@it_mike_s/nothing-useful": "0.0.5-dev.2"
   },
   "changesets": [
     "orange-games-provide",
