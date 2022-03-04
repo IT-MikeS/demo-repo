@@ -5,6 +5,7 @@
     "@it_mike_s/nothing-useful": "0.0.2-next.0"
   },
   "changesets": [
+    "cool-penguins-cry",
     "modern-brooms-do"
   ]
 }
