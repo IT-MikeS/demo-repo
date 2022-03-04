@@ -5,10 +5,31 @@ on:
     branches: ['main', 'next', 'dev']
 
 jobs:
+  check-for-changesets:
+    name: Check for Changeset files
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Volta
+        uses: volta-cli/action@fdf4cf319494429a105efaa71d0e5ec67f338c6e
+        with:
+          registry-url: https://registry.npmjs.org/
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Check for changeset files
+        run: npx changeset status
+
   release-latest:
     name: Release Latest
     if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
+    needs: ['check-for-changesets']
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -59,6 +80,7 @@ jobs:
     name: Release Next
     if: github.ref == 'refs/heads/next' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
+    needs: ['check-for-changesets']
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
@@ -91,6 +113,7 @@ jobs:
     name: Release Dev
     if: github.ref == 'refs/heads/dev' && !contains(github.event.head_commit.message, '[skip releases]')
     runs-on: ubuntu-latest
+    needs: ['check-for-changesets']
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v2
