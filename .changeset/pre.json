@@ -1,0 +1,11 @@
+{
+  "mode": "exit",
+  "tag": "dev",
+  "initialVersions": {
+    "@it_mike_s/nothing-useful": "0.0.5-dev.0"
+  },
+  "changesets": [
+    "orange-games-provide",
+    "shaggy-tools-repeat"
+  ]
+}
