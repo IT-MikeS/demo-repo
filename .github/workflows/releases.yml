@@ -35,6 +35,15 @@ jobs:
           git commit -m "Publish to NPM as latest [skip releases]"
           npx changeset publish
           git push --follow-tags
+      
+      - name: Merge main -> next
+        uses: devmasx/merge-branch@8b86512c768bec19827894f0a39a776809668189
+        with:
+          type: now
+          from_branch: main
+          target_branch: next
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          message: 'Sync branches with main after release [skip releases]'
 
   
   release-next:
