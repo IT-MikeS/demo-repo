@@ -1,5 +1,11 @@
 # @it_mike_s/nothing-useful
 
+## 0.0.0-dev.0
+
+### Patch Changes
+
+- [#12](https://github.com/IT-MikeS/demo-repo/pull/12) [`11731b5`](https://github.com/IT-MikeS/demo-repo/commit/11731b57ce6ae812367459f1da0e85c8749052a9) Thanks [@IT-MikeS](https://github.com/IT-MikeS)! - comment
+
 ## 0.0.0-dev-20220304174909
 
 ### Patch Changes
