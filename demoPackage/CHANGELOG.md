@@ -1,5 +1,11 @@
 # @it_mike_s/nothing-useful
 
+## 0.0.4
+
+### Patch Changes
+
+- [#7](https://github.com/IT-MikeS/demo-repo/pull/7) [`c4daf5a`](https://github.com/IT-MikeS/demo-repo/commit/c4daf5ab43c96ebf1e4e7ce1f1cbcdf23d51b083) Thanks [@IT-MikeS](https://github.com/IT-MikeS)! - comment edit
+
 ## 0.0.4-next.0
 
 ### Patch Changes
